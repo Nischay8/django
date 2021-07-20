@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Sl.NO</th>
+            <th scope="col">username</th>
+            <th scope="col">email</th>
+            <th scope="col">address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            {% for nit in tyu %}
+            <td>{{nit.username}}</td>
+            <td>{{nit.email}}</td>
+            <td>{{nit.Address}}</td>
+            <a href="{% url 'updatedata' nit.id %}" class="btn btn-warning btn-sm">Edit</a>
+            <form action="{% url 'deletedata' nit.id  %}" method="POST" class="d-inline">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-denger" value="delete">
+            </form>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+
+</div>
+</body>
+</html>
